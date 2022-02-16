@@ -4,6 +4,10 @@ const quoteInputElement = document.getElementById('quote-input');
 const timerElement = document.getElementById('timer');
 
 
+const result_container = document.querySelector('.result-container');
+const result = document.querySelector('.result');
+const yes_btn = document.querySelector('.result-container .btn-yes');
+
 quoteInputElement.addEventListener('input', () => {
     const arrayQuote = quoteDisplayElemt.querySelectorAll('span');
     const arrayValue = quoteInputElement.value.split('');
@@ -26,10 +30,15 @@ quoteInputElement.addEventListener('input', () => {
         }
     })
     if(correct) {
-    //  alert(timerElement.innerHTML);
-    document.querySelector('.result-container').style.display = "inline-block";
-    document.querySelector('.result').innerText = getTimerTime();
-    renderNewQuote();}
+    result_container.style.display = "inline-block";
+    result.innerText = getTimerTime();
+    
+    yes_btn.addEventListener('click', () => {
+        result_container.style.display = "none";
+        renderNewQuote();
+    })
+
+    }
 })
 
 
